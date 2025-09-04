@@ -1,0 +1,21 @@
+<mat-accordion multi="true">
+  @if (reports.length > 0) {
+    @for (report of reports; track report.report) {
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ report.machine }} - {{ report.report }} - {{ report.engineHours }}h
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+          Country: {{ report.country }} | Status: {{ report.status }}
+        </p>
+        <mat-action-row>
+          <button mat-button color="primary">Edit</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    }
+  } @else {
+    <p>No reports available.</p>
+  }
+</mat-accordion>
