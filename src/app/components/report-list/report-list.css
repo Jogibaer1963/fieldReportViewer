@@ -1,0 +1,17 @@
+
+.report-row {
+  display: grid;
+  grid-template-columns:
+    9ch   /* machine */
+    9ch   /* code */
+    5ch    /* hours */
+    5ch   /* country */
+    25ch   /* status */
+    10ch   /* date */
+    29ch    /* part name expands */
+    12ch;  /* price */
+  gap: 0.5rem;
+  align-items: center;
+}
+
+

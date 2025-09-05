@@ -1,0 +1,40 @@
+:host {
+  display: block;
+}
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4em;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* title left, actions right */
+  padding: 0 1rem;
+  gap: 1rem;
+}
+
+.app-title {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.app-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center ;
+  flex-wrap: wrap;
+}
+
+/* Remove fixed positioning from individual buttons */
+.sortHours,
+.sortPrice,
+.sortTeam,
+.showTeamOnly {
+  position: static;
+  z-index: auto;
+}

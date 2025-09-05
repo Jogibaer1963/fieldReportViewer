@@ -9,6 +9,12 @@ export interface Report {
   report: string;
   status: string;
   engineHours: string;
+  repairDate: string;
+  partName: string;
+  grossLaborParts: string;
+  failure: string;
+  remedy: string;
+  longTextExtra: string;
 }
 
 @Injectable({

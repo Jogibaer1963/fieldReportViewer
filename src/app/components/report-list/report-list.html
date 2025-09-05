@@ -4,14 +4,23 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{ report.machine }} - {{ report.report }} - {{ report.engineHours }}h
+            <div class="report-row">
+              <span class="cell machine">{{ report.machine }}</span>
+              <span class="cell code">{{ report.report }}</span>
+              <span class="cell hours">{{ report.engineHours }}h</span>
+              <span class="cell country">{{ report.country }}</span>
+              <span class="cell status">{{ report.status }}</span>
+              <span class="cell date">{{ report.repairDate.slice(0, 10) }}</span>
+              <span class="cell part">{{ report.partName }}</span>
+              <span class="cell price">US$ {{ report.grossLaborParts | number:'1.2-2' }}</span>
+            </div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <p>
-          Country: {{ report.country }} | Status: {{ report.status }}
+          {{ report.failure }} {{ report. remedy }} {{ report.longTextExtra }}
         </p>
         <mat-action-row>
-          <button mat-button color="primary">Edit</button>
+
         </mat-action-row>
       </mat-expansion-panel>
     }

@@ -25,6 +25,4 @@ export class ReportList implements OnInit {
       this.reports = data;
     });
   }
-
-// ... existing code ...
 }

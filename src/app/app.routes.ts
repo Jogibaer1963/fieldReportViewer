@@ -6,5 +6,4 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/report-list/report-list').then(m => m.ReportList),
   },
-
 ];
