@@ -10,13 +10,29 @@ export const getReports = async (req, res) => {
   }
 };
 
-// @desc Create a new report
-export const createReport = async (req, res) => {
+export const updateTeam = async (req, res) => {
   try {
-    const report = new Report(req.body);
-    const savedReport = await report.save();
-    res.status(201).json(savedReport);
+    const { id } = req.params;
+    const { team } = req.body;
+
+    console.log(id, team);
+
+    if (typeof team !== "string" || team.trim() === "") {
+      return res.status(400).json({ message: "team must be a non-empty string" });
+    }
+
+    const updated = await Report.findByIdAndUpdate(
+      id,{ $set: { team: team.trim() } },{ new: true, runValidators: true }
+    );
+
+    if (!updated) {
+      return res.status(404).json({ message: "Report not found" });
+    }
+
+    res.json(updated);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 };
+
+

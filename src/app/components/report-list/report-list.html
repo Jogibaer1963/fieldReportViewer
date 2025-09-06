@@ -13,6 +13,7 @@
               <span class="cell date">{{ report.repairDate.slice(0, 10) }}</span>
               <span class="cell part">{{ report.partName }}</span>
               <span class="cell price">US$ {{ report.grossLaborParts | number:'1.2-2' }}</span>
+              <span class="cell team">{{ report.team }}</span>
             </div>
           </mat-panel-title>
         </mat-expansion-panel-header>
@@ -20,8 +21,9 @@
           {{ report.failure }} {{ report. remedy }} {{ report.longTextExtra }}
         </p>
         <mat-action-row>
-
+          <button matButton="outlined" (click)="onEditTeam(report)">Edit Team</button>
         </mat-action-row>
+
       </mat-expansion-panel>
     }
   } @else {

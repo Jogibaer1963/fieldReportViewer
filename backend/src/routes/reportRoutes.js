@@ -1,9 +1,10 @@
 import express from "express";
-import { getReports, createReport } from "../controllers/reportController.js";
+import { getReports, updateTeam } from "../controllers/reportController.js";
 
 const router = express.Router();
 
 router.get("/", getReports);
-router.post("/", createReport);
+router.patch("/:id/team", updateTeam);
+
 
 export default router;

@@ -9,7 +9,8 @@
     25ch   /* status */
     10ch   /* date */
     29ch    /* part name expands */
-    12ch;  /* price */
+    12ch  /* price */
+     8em; /* team */
   gap: 0.5rem;
   align-items: center;
 }

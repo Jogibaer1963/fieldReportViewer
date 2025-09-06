@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const reportSchema = new mongoose.Schema({
+  _id: { type: String, required: true },
   machine: { type: String, required: true },
   country: { type: String },
   report: { type: String, required: true },
@@ -11,7 +12,8 @@ const reportSchema = new mongoose.Schema({
   grossLaborParts: { type:String },
   failure: { type: String },
   remedy: { type: String },
-  longTextExtra: { type: String }
+  longTextExtra: { type: String },
+  team: {type: String },
 }, { timestamps: true, collection: "fieldReports" });
 
 export default mongoose.model("Report", reportSchema);
