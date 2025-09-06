@@ -16,6 +16,8 @@ export interface Report {
   remedy: string;
   longTextExtra: string;
   team: string;
+  hideReport?: boolean;
+  remove?: boolean;
 }
 
 @Injectable({
@@ -32,7 +34,10 @@ export class ReportService {
   }
 
   updateTeam(_id: string, team: string): Observable<Report> {
-    console.log(_id, team);
     return this.http.patch<Report>(`${this.apiUrl}/${_id}/team`, { team });
+  }
+
+  updateHideReport(_id: string, hideReport: boolean): Observable<Report> {
+    return this.http.patch<Report>(`${this.apiUrl}/${_id}/hide`, { hideReport });
   }
 }

@@ -22,10 +22,11 @@
         </p>
         <mat-action-row>
           <button matButton="outlined" (click)="onEditTeam(report)">Edit Team</button>
+          <button matButton="outlined" (click)="onHideReport(report)">Hide Report</button>
         </mat-action-row>
 
       </mat-expansion-panel>
-    }
+      }
   } @else {
     <p>No reports available.</p>
   }

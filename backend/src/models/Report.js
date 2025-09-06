@@ -14,6 +14,7 @@ const reportSchema = new mongoose.Schema({
   remedy: { type: String },
   longTextExtra: { type: String },
   team: {type: String },
+  hideReport: {type: Boolean, default: false},
 }, { timestamps: true, collection: "fieldReports" });
 
 export default mongoose.model("Report", reportSchema);
