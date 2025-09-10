@@ -8,7 +8,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:server": "nodemon backend/src/server.js"
+    "dev:server": "nodemon backend/src/server.js",
+    "serve:ssr:fieldReportViewer": "node dist/fieldReportViewer/server/server.mjs"
   },
   "scripis": {
     "start": "node backend/src/server.js",
@@ -42,7 +43,9 @@
     "@angular/forms": "^20.2.0",
     "@angular/material": "^20.2.2",
     "@angular/platform-browser": "^20.2.0",
+    "@angular/platform-server": "^20.2.0",
     "@angular/router": "^20.2.0",
+    "@angular/ssr": "^20.2.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
@@ -58,7 +61,9 @@
     "@angular/build": "^20.2.2",
     "@angular/cli": "^20.2.2",
     "@angular/compiler-cli": "^20.2.0",
+    "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^20.17.19",
     "jasmine-core": "^5.10.0",
     "karma": "^6.4.4",
     "karma-chrome-launcher": "~3.2.0",

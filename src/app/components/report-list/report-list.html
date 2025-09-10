@@ -21,8 +21,10 @@
           {{ report.failure }} {{ report. remedy }} {{ report.longTextExtra }}
         </p>
         <mat-action-row>
-          <button matButton="outlined" (click)="onEditTeam(report)">Edit Team</button>
-          <button matButton="outlined" (click)="onHideReport(report)">Hide Report</button>
+          <button mat-stroked-button color="primary"
+                  (click)="onEditTeam(report)">Edit Team</button>
+          <button mat-stroked-button color="warn"
+                  (click)="onHideReport(report)">Hide Report</button>
         </mat-action-row>
 
       </mat-expansion-panel>
