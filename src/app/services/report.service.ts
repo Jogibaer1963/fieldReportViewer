@@ -23,9 +23,9 @@ export interface Report {
 @Injectable({
   providedIn: 'root'
 })
-
 export class ReportService {
-  private apiUrl = 'http://localhost:5000/api/reports';
+  // Use relative URL so Angular dev-server proxy can forward to backend
+  private apiUrl = '/api/reports';
 
   constructor(private http: HttpClient) {}
 

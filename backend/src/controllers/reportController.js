@@ -1,6 +1,8 @@
 import Report from "../models/Report.js";
-import { io } from "../server.js";
 
+// -----------------------------------------------------------------------------
+// ES-module exports for every handler
+// -----------------------------------------------------------------------------
 
 // @desc Get all reports
 export const getReports = async (req, res) => {
@@ -12,28 +14,21 @@ export const getReports = async (req, res) => {
   }
 };
 
-export const updateTeam = async (req, res) => {
+export const updateTeam = async (req, res, next) => {   // <-- changed
   try {
     const { id } = req.params;
     const { team } = req.body;
 
-    console.log(id, team);
-
-    if (typeof team !== "string" || team.trim() === "") {
-      return res.status(400).json({ message: "team must be a non-empty string" });
-    }
-
     const updated = await Report.findByIdAndUpdate(
-      id,{ $set: { team: team.trim() } },{ new: true, runValidators: true }
+      id,
+      { team },
+      { new: true }
     );
 
-    if (!updated) {
-      return res.status(404).json({ message: "Report not found" });
-    }
-
+    req.app.get("io")?.emit("reportUpdated", updated);
     res.json(updated);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    next(err);
   }
 };
 
@@ -56,9 +51,7 @@ export const updateHide = async (req, res) => {
       return res.status(404).json({ message: "Report not found" });
     }
 
-    io.emit('reportHidden', { _id: updated._id, hideReport: updated.hideReport });
-
-
+    req.app.get("io")?.emit("reportHidden", { _id: updated._id, hideReport });
     res.json(updated);
   } catch (err) {
     res.status(400).json({ message: err.message });

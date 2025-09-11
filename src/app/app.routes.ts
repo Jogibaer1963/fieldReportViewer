@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
+import { ReportList } from './components/report-list/report-list';
+
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () =>
-      import('./components/report-list/report-list').then(m => m.ReportList),
+    component: ReportList
   },
+  { path: '**', redirectTo: '' }
 ];

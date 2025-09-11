@@ -1,6 +1,6 @@
 <mat-accordion multi="true">
   @if (reports.length > 0) {
-    @for (report of reports; track report.report) {
+    @for (report of reports; track report._id) {
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -10,7 +10,7 @@
               <span class="cell hours">{{ report.engineHours }}h</span>
               <span class="cell country">{{ report.country }}</span>
               <span class="cell status">{{ report.status }}</span>
-              <span class="cell date">{{ report.repairDate.slice(0, 10) }}</span>
+              <span class="cell date">{{ report.repairDate | date:'yyyy-MM-dd' }}</span>
               <span class="cell part">{{ report.partName }}</span>
               <span class="cell price">US$ {{ report.grossLaborParts | number:'1.2-2' }}</span>
               <span class="cell team">{{ report.team }}</span>
@@ -18,7 +18,7 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <p>
-          {{ report.failure }} {{ report. remedy }} {{ report.longTextExtra }}
+          {{ report.failure }} {{ report.remedy }} {{ report.longTextExtra }}
         </p>
         <mat-action-row>
           <button mat-stroked-button color="primary"
@@ -32,4 +32,5 @@
   } @else {
     <p>No reports available.</p>
   }
+
 </mat-accordion>

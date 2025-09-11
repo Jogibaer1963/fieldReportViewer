@@ -1,77 +1,82 @@
 {
   "name": "field-report-viewer",
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:server": "nodemon backend/src/server.js",
     "serve:ssr:fieldReportViewer": "node dist/fieldReportViewer/server/server.mjs"
   },
-  "scripis": {
-    "start": "node backend/src/server.js",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "dev:server": "nodemon backend/src/server.js"
-  },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
-        }
+  "architect": {
+    "serve": {
+      "builder": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "proxyConfig": "proxy.conf.json"
       }
-    ]
-  },
-  "private": true,
-  "overrides": {
-    "glob": "^10.4.5"
-  },
-  "dependencies": {
-    "@angular/animations": "^20.2.4",
-    "@angular/cdk": "^20.2.2",
-    "@angular/common": "^20.2.0",
-    "@angular/compiler": "^20.2.0",
-    "@angular/core": "^20.2.0",
-    "@angular/forms": "^20.2.0",
-    "@angular/material": "^20.2.2",
-    "@angular/platform-browser": "^20.2.0",
-    "@angular/platform-server": "^20.2.0",
-    "@angular/router": "^20.2.0",
-    "@angular/ssr": "^20.2.2",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.2",
-    "express": "^5.1.0",
-    "glob": "^10.4.5",
-    "install": "^0.13.0",
-    "mongoose": "^8.18.0",
-    "rxjs": "~7.8.0",
-    "socket.io-client": "^4.8.1",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
-  },
-  "devDependencies": {
-    "@angular/build": "^20.2.2",
-    "@angular/cli": "^20.2.2",
-    "@angular/compiler-cli": "^20.2.0",
-    "@types/express": "^5.0.1",
-    "@types/jasmine": "~5.1.0",
-    "@types/node": "^20.17.19",
-    "jasmine-core": "^5.10.0",
-    "karma": "^6.4.4",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "nodemon": "^3.1.10",
-    "rimraf": "^6.0.1",
-    "typescript": "~5.9.2"
+    },
+      "version": "0.0.0",
+      "type": "module",
+      "prettier": {
+        "printWidth": 100,
+        "singleQuote": true,
+        "overrides": [
+          {
+            "files": "*.html",
+            "options": {
+              "parser": "angular"
+            }
+          }
+        ]
+      },
+      "private": true,
+      "overrides": {
+        "glob": "^10.4.5"
+      },
+      "dependencies": {
+        "@angular/animations": "^20.2.4",
+        "@angular/cdk": "^20.2.2",
+        "@angular/common": "^20.2.0",
+        "@angular/compiler": "^20.2.0",
+        "@angular/core": "^20.2.0",
+        "@angular/forms": "^20.2.0",
+        "@angular/material": "^20.2.2",
+        "@angular/platform-browser": "^20.2.0",
+        "@angular/platform-server": "^20.2.0",
+        "@angular/router": "^20.2.0",
+        "@angular/ssr": "^20.2.2",
+        "cors": "^2.8.5",
+        "dotenv": "^17.2.2",
+        "express": "^5.1.0",
+        "glob": "^10.4.5",
+        "install": "^0.13.0",
+        "mongoose": "^8.18.0",
+        "rxjs": "~7.8.0",
+        "socket.io": "^4.8.1",
+        "socket.io-client": "^4.8.1",
+        "tslib": "^2.3.0",
+        "zone.js": "~0.15.0"
+      },
+      "devDependencies": {
+        "@angular/build": "^20.2.2",
+        "@angular/cli": "^20.2.2",
+        "@angular/compiler-cli": "^20.2.0",
+        "@types/express": "^5.0.1",
+        "@types/jasmine": "~5.1.0",
+        "@types/node": "^20.17.19",
+        "jasmine-core": "^5.10.0",
+        "karma": "^6.4.4",
+        "karma-chrome-launcher": "~3.2.0",
+        "karma-coverage": "~2.2.0",
+        "karma-jasmine": "~5.1.0",
+        "karma-jasmine-html-reporter": "~2.1.0",
+        "nodemon": "^3.1.10",
+        "rimraf": "^6.0.1",
+        "typescript": "~5.9.2"
+      }
+    }
   }
-}
+
+
+
