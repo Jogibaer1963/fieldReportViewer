@@ -1,0 +1,52 @@
+.report-row {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.cell {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left; /* Align text consistently */
+}
+
+.machine {
+  width: 11ch;
+}
+
+.report {
+  width: 11ch;
+}
+
+.hours {
+  text-align: right;
+  width: 5ch;
+}
+
+.country {
+  text-align: center;
+  width: 7ch;
+}
+
+.status {
+  text-align: left;
+  width: 20ch;
+}
+
+.date {
+  text-align: right;
+  width: 15ch;
+}
+
+.part {
+  text-align: left;
+  width: 20ch;
+}
+
+.price {
+  text-align: left;
+  width: 15ch;
+}
+

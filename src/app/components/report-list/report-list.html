@@ -1,0 +1,50 @@
+<mat-accordion multi="true">
+  <!-- Ladezustand anzeigen -->
+  @if (loading) {
+    <div class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>Lade Reports...</p>
+    </div>
+  }
+  @if (reports.length > 0) {
+    @for (report of reports; track report._id) {
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="report-row">
+              <span class="cell machine">{{ report.machine }} |</span>
+              <span class="cell report">{{ report.report }} |</span>
+              <span class="cell hours">{{ report.engineHours }} h | </span>
+              <span class="cell country">{{ report.country }} | </span>
+              <span class="cell status">{{ report.status }}</span>
+              <span class="cell date"> | {{ report.repairDate ? (report.repairDate | date:'yyyy-MM-dd') : '—' }}</span>
+              <span class="cell part"> | {{ report.partName }}</span>
+              <span class="cell price"> | {{ report.grossLaborParts | currency:'USD':'symbol':'1.2-2' }}</span>
+              <span class="cell team"> | {{ report.team }} |</span>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <p>{{ report.failure }} {{ report.remedy }} {{ report.longTextExtra }}</p>
+
+        <mat-action-row>
+          <button type="button"
+                  mat-stroked-button
+                  [disabled]="processingIds.has(report._id)"
+                  (click)="onEditTeam(report)">
+            Edit Team
+          </button>
+          <button type="button"
+                  mat-stroked-button
+                  color="warn"
+                  [disabled]="processingIds.has(report._id)"
+                  (click)="onHideReport(report)">
+            Hide Report
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    }
+  } @else if (!loading) {
+    <p>No reports available.</p>
+  }
+</mat-accordion>
