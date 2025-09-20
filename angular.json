@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fieldReportViewer": {
+    "field-report-viewer": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -19,9 +19,12 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/"
               }
             ],
             "styles": [
@@ -56,13 +59,16 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "fieldReportViewer:build:production"
+              "buildTarget": "field-report-viewer:build:production"
             },
             "development": {
-              "buildTarget": "fieldReportViewer:build:development"
+              "buildTarget": "field-report-viewer:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
@@ -88,5 +94,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "22e74cb2-9df1-43f7-9b47-284863bc3c3b"
   }
 }

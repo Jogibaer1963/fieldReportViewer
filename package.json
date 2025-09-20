@@ -1,12 +1,14 @@
 {
   "name": "field-report-viewer",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:dev": "nodemon ./backend/src/server.js"
   },
   "prettier": {
     "printWidth": 100,
@@ -26,9 +28,15 @@
     "@angular/compiler": "^20.3.0",
     "@angular/core": "^20.3.0",
     "@angular/forms": "^20.3.0",
+    "@angular/material": "^20.2.3",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
+    "dotenv": "^17.2.2",
+    "material": "^0.9.24",
+    "mongoose": "^8.18.1",
+    "nodemon": "^3.1.10",
     "rxjs": "~7.8.0",
+    "socket.io": "^4.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
