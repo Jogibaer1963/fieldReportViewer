@@ -24,18 +24,21 @@ export interface Report {
 @Injectable({ providedIn: 'root' })
 export class ReportService {
   private http = inject(HttpClient);
-  private readonly baseUrl = '/api/reports';
+  private readonly baseUrl = '/api/reports';  // Nur '/api' ohne '/reports'
+
 
   getReports(): Observable<Report[]> {
-  return this.http.get<Report[]>(this.baseUrl).pipe(
-    retry(2), // Nur GET-Requests neu versuchen
-    map(list => Array.isArray(list) ? list : []),
-    catchError(err => {
-      console.error('getReports failed', err);
-      return throwError(() => new Error('Failed to fetch reports: ' + (err?.message ?? err)));
-    })
-  );
-}
+    return this.http.get<Report[]>(this.baseUrl).pipe(
+      retry(2),
+      map(list => Array.isArray(list) ? list : []),
+      catchError(err => {
+        console.error('getReports failed', err);
+        return throwError(() => new Error('Failed to fetch reports: ' + (err?.message ?? err)));
+      })
+    );
+  }
+
+
 
   // Fix: echte Aktualisierung am Server; nutze "hideReport" (nicht "hidden")
   updateHideReport(id: string, hideReport: boolean): Observable<Report> {
@@ -51,15 +54,15 @@ export class ReportService {
       );
   }
 
-updateTeam(id: string, team: string): Observable<Report> {
-  return this.http
-    .patch<Report>(`${this.baseUrl}/${encodeURIComponent(id)}`, { team })
-    .pipe(
-      catchError(err => {
-        console.error('updateTeam failed', err);
-        const statusInfo = err?.status ? `(${err.status} ${err.statusText})` : '';
-        return throwError(() => new Error(`Failed to update team ${statusInfo}: ${err?.error?.message || err?.message || 'Unknown error'}`));
-      })
-    );
-}
+  updateTeam(id: string, team: string): Observable<Report> {
+    return this.http
+      .patch<Report>(`${this.baseUrl}/${encodeURIComponent(id)}`, { team })
+      .pipe(
+        catchError(err => {
+          console.error('updateTeam failed', err);
+          const statusInfo = err?.status ? `(${err.status} ${err.statusText})` : '';
+          return throwError(() => new Error(`Failed to update team ${statusInfo}: ${err?.error?.message || err?.message || 'Unknown error'}`));
+        })
+      );
+  }
 }
