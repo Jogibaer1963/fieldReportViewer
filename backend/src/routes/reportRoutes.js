@@ -4,7 +4,7 @@ import { getReports, updateHide, updateTeam } from "../controllers/reportControl
 const router = express.Router();
 
 router.get("/", getReports);
-router.patch("/:id/team", updateTeam);
+router.patch("/:id", updateTeam);
 router.patch("/:id/hide", updateHide);
 
 export default router;

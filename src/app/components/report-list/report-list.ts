@@ -59,7 +59,6 @@ export class ReportListComponent {
       console.error('Cannot hide report: report id is missing');
       return;
     }
-
     // Verhindern von Doppelklicks
     if (this.processingIds.has(report._id)) return;
     this.processingIds.add(report._id);

@@ -4,7 +4,7 @@ import { io } from "../server.js";
 // @desc Get all reports
 export const getReports = async (req, res) => {
   try {
-    const reports = await Report.find();
+    const reports = await Report.find({hideReport: {$ne: true}});
     res.json(reports);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -40,6 +40,7 @@ export const updateHide = async (req, res) => {
   try {
     const { id } = req.params;
     const { hideReport } = req.body;
+    console.log("inside reportController",id, hideReport);
     if (typeof hideReport !== "boolean") {
       return res.status(400).json({ message: "hideReport must be a boolean" });
     }

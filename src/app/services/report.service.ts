@@ -22,12 +22,14 @@ export interface Report {
 }
 
 @Injectable({ providedIn: 'root' })
+
 export class ReportService {
   private http = inject(HttpClient);
   private readonly baseUrl = '/api/reports';  // Nur '/api' ohne '/reports'
 
 
   getReports(): Observable<Report[]> {
+    console.log("getReports");
     return this.http.get<Report[]>(this.baseUrl).pipe(
       retry(2),
       map(list => Array.isArray(list) ? list : []),
@@ -43,7 +45,7 @@ export class ReportService {
   // Fix: echte Aktualisierung am Server; nutze "hideReport" (nicht "hidden")
   updateHideReport(id: string, hideReport: boolean): Observable<Report> {
     return this.http
-      .patch<Report>(`${this.baseUrl}/${encodeURIComponent(id)}`, { hideReport })
+      .patch<Report>(`${this.baseUrl}/${encodeURIComponent(id)}/hide`, { hideReport })
       .pipe(
         catchError(err => {
           console.error('updateHideReport failed', err);
